@@ -1,0 +1,15 @@
+version: "2"
+linters:
+  default: none
+  enable:
+    - asciicheck
+    - bodyclose
+    - dupl
+    - errorlint
+    - copyloopvar
+    - funlen
+  exclusions:
+    generated: strict
+    paths:
+      - "usage.go"
+      - "license-data.go"
