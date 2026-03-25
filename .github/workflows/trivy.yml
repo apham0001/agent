@@ -24,7 +24,7 @@ jobs:
         run: docker build -t agent-scan:latest .
 
       - name: Trivy image scan
-        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # master
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # v0.35.0
         with:
           image-ref: agent-scan:latest
           format: sarif
@@ -32,7 +32,7 @@ jobs:
           severity: CRITICAL,HIGH
 
       - name: Upload image SARIF
-        uses: github/codeql-action/upload-sarif@ebcb5b36ded6beda4ceefea6a8bc4cc885255bb3 # v3
+        uses: github/codeql-action/upload-sarif@480db559a14342288b67e54bd959dd52dc3ee68f # v3
         if: always()
         with:
           sarif_file: trivy-image.sarif
@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       - name: Trivy filesystem scan
-        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # master
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # v0.35.0
         with:
           scan-type: fs
           scan-ref: .
@@ -55,7 +55,7 @@ jobs:
           severity: CRITICAL,HIGH
 
       - name: Upload filesystem SARIF
-        uses: github/codeql-action/upload-sarif@ebcb5b36ded6beda4ceefea6a8bc4cc885255bb3 # v3
+        uses: github/codeql-action/upload-sarif@480db559a14342288b67e54bd959dd52dc3ee68f # v3
         if: always()
         with:
           sarif_file: trivy-fs.sarif
